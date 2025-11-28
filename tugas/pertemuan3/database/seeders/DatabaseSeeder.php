@@ -17,8 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
-            User::factory()->create([
+        // Create 5 users
+        $users = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $users[] = User::factory()->create([
                 'name' => 'User ' . $i,
                 'username' => 'user' . $i,
                 'email' => 'user' . $i . '@example.com',
@@ -26,8 +28,19 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Category::factory(5)->create();
+        // Create 2 categories
+        $categories = [
+            Category::create([
+                'name' => 'Technology',
+                'slug' => 'technology',
+            ]),
+            Category::create([
+                'name' => 'Lifestyle',
+                'slug' => 'lifestyle',
+            ]),
+        ];
 
-        Post::factory(50)->recycle(User::all())->recycle(Category::all())->create();
+        // Create 10 posts
+        Post::factory(10)->recycle($users)->recycle($categories)->create();
     }
 }
