@@ -12,4 +12,9 @@ public function index()
         $posts = Post::all();
         return view('posts', compact('posts'));
     }
+
+    public function show(Post $post)
+    {
+        return view('post', compact('post'));
+    }
 }
