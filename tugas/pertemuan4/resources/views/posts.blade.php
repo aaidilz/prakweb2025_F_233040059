@@ -38,13 +38,6 @@
                         <button type="submit" class="absolute end-1.5 bottom-1.5 bg-brand hover:bg-blue-700 text-white font-medium leading-5 rounded-md text-xs px-1.5 focus:outline-none focus:ring-4 focus:ring-transparent focus:ring-offset-transparent">Search</button>
                     </div>
                 </form>
-
-                <a href="{{ route('posts.index') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-colors duration-200 whitespace-nowrap">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    Add Post
-                </a>
             </div>
 
             <div class="text-center mb-12">

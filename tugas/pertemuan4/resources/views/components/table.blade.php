@@ -8,6 +8,9 @@
                         No
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
+                        Image
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
                         Title
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
@@ -26,6 +29,13 @@
                         <td class="px-6 py-4">
                             {{ $posts->firstItem() + $loop->index }}
                         </td>
+                        <td class="px-6 py-4">
+                            @if($post->image_path)
+                                <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="w-16 h-16 rounded-lg object-cover">
+                            @else
+                                <img id="preview" class="w-16 h-16 rounded-lg bg-gray-100" src="{{ asset('images/preview.jpg') }}" alt="Image preview">
+                            @endif
+                        </td>
                         <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
                             {{ $post->title }}
                         </th>
@@ -41,7 +51,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-12 text-center text-gray-500">
+                        <td colspan="7" class="px-6 py-12 text-center text-gray-500">
                             No posts yet.
                             <a href="{{ route('dashboard.create') }}" class="text-blue-600 hover:underline">Create one</a>
                         </td>
