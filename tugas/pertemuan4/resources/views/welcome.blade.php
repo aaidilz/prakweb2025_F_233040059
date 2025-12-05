@@ -25,7 +25,7 @@
                     Register
                 </a>
                 @else
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300">
+                <a href="{{ route('dashboard.index') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300">
                     Go to Dashboard
                 </a>
                 @endguest

@@ -7,10 +7,20 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
-        return view('posts', compact('posts'));
+        $search = $request->query('search');
+        
+        $query = Post::query();
+        
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%')
+                  ->orWhere('excerpt', 'like', '%' . $search . '%');
+        }
+        
+        $posts = $query->paginate(9);
+        
+        return view('posts', compact('posts', 'search'));
     }
 
     public function show(Post $post)
