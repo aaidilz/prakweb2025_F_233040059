@@ -20,6 +20,7 @@
                         Published At
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
+                        Actions
                     </th>
                 </tr>
             </thead>
@@ -45,8 +46,14 @@
                         <td class="px-6 py-4">
                             {{ $post->created_at->format('d M Y') }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 space-x-2">
                             <a href="{{ route('dashboard.show', ['post' => $post->slug]) }}" class="text-blue-600 hover:underline">View</a>
+                            <a href="{{ route('dashboard.edit', ['post' => $post->slug]) }}" class="text-yellow-600 hover:underline">Edit</a>
+                            <form action="{{ route('dashboard.destroy', ['post' => $post->slug]) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this post?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
